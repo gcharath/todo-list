@@ -1,0 +1,50 @@
+spring:
+  cassandra:
+      schema-action: CREATE_IF_NOT_EXISTS
+#  profiles:
+#    active: dev
+  security:
+    user:
+      name: admin
+      password: admin123
+
+
+
+
+  #jackson:
+  #  serialization:
+  #    WRITE_DATES_AS_TIMESTAMPS: false
+
+  jackson:
+    date-format: yyyy-MM-dd,MM-dd-yyyy
+
+astra:
+  api:
+    application-token: ${APP_TOKEN}
+    #database-id: 5f14dfb6-a684-4460-9c7b-36cfa78e78f0
+    database-id: ${DATABASE_ID}
+    database-region: ${DATABASE_REGION}
+    cross-region-failback: false
+    grpc:
+      enabled: true
+  cql:
+    enabled: true
+    download-scb:
+      # if disabled zip files must be in folder (path)
+      enabled: true
+      # Looking for files scb_dbid-dbregion.zip in folder (default is ~/.astra/scb)
+      # path: /tmp
+    driver-config:
+      basic:
+        session-keyspace: main
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
